@@ -9,7 +9,9 @@ function! PrefixVisualMyCSS()
     call inputsave()
     let Options = input('Enter options:')
     call inputrestore()
-        silent exec "'<,'>! postcss --use autoprefixer " . escape(expand(Options), '%')
+        silent exec "'<,'>! postcss --use autoprefixer "
+          \ . escape(expand(Options), '%')
+          \ . " 2> /dev/null"
 endfunction
 
 function! PrefixMyCSS()
@@ -18,5 +20,7 @@ function! PrefixMyCSS()
     call inputsave()
     let Options = input('Enter options:')
     call inputrestore()
-        silent exec "%! postcss --use autoprefixer " . escape(expand(Options), '%')
+        silent exec "%! postcss --use autoprefixer "
+          \ . escape(expand(Options), '%')
+          \ . " 2> /dev/null"
 endfunction
